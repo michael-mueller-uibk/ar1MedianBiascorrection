@@ -2,6 +2,8 @@
 
 Modified biascorrection by Sørbye
 
+!The package is under active development!
+
 ## Installation
 
 ```{r}
