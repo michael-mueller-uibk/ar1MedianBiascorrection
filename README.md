@@ -7,7 +7,7 @@ Modified biascorrection by Sørbye
 ## Installation
 
 ```{r}
-devtools::install.github("https://github.com/michael-mueller-uibk/ar1MedianBiascorrection")
+devtools::install_github("https://github.com/michael-mueller-uibk/ar1MedianBiascorrection")
 ```
 
 ## Usage
