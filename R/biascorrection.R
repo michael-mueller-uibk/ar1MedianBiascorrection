@@ -40,16 +40,14 @@ ar1_bias_corr <- function(phi, n, method = "yw") {
   require("Matrix")
   # TODO Sanity checks
   # ...
-  # Read optimal b's depending on the method the ar parameter is estimated
-  path_sim <- file.path("data")
-  file <- switch(method,
-                 "yw" = list.files(path = path_sim, pattern = "opt_b_yw*"),
-                 "mle" = list.files(path = path_sim, pattern = "opt_b_mle*"),
-                 "burg" = list.files(path = path_sim, pattern = "opt_b_burg*")
+
+  # Get optimal betas from sysdata.RDA
+  switch(method,
+         "yw" = betas <- ar1MedianBiascorrection:::yule_walker_betas,
+         "burg" = betas <- ar1MedianBiascorrection:::burg_betas,
   )
-  load(file.path(path_sim, file[[1]]))
-  # Get the b's for the specific period
-  b <- sims[[n - 4]]
+  # Get the betas for the specific period
+  b <- betas[[n - 4]]
   # compute unbiased coefficient
   y <- b %*% matrix(.h3_g(phi), 4, 1)
   # compute inverse transformation (g1)
