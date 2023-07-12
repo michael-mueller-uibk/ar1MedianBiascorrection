@@ -36,14 +36,11 @@ ar1_bias_corr <- function(phi, n, method = "yw") {
   #'
   #' @examples
 
-
-  require("Matrix")
   # TODO Sanity checks
   # ...
-
   # Get optimal betas from sysdata.RDA
   switch(method,
-         "yw" = betas <- ar1MedianBiascorrection:::yule_walker_betas,
+         "yw"   = betas <- ar1MedianBiascorrection:::yule_walker_betas,
          "burg" = betas <- ar1MedianBiascorrection:::burg_betas,
   )
   # Get the betas for the specific period
