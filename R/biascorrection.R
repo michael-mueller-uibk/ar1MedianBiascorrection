@@ -51,7 +51,7 @@ ar1_bias_corr <- function(phi, n, method = "yw") {
   if (!is.numeric(phi) || length(phi) != 1) {
     stop("Argument 'phi' must be a numeric value.")
   }
-  if (!is.integer(n) || n <= 4 || n > 100) {
+  if (n <= 4 || n > 100) {
     stop("Argument 'n' must be an integer between 5 and 100")
   }
   if (!method %in% c("yw", "burg")) {
