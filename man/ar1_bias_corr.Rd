@@ -2,13 +2,28 @@
 % Please edit documentation in R/biascorrection.R
 \name{ar1_bias_corr}
 \alias{ar1_bias_corr}
-\title{Title}
+\title{Corrects the bias of estimates based on the AR(1) process.}
 \usage{
 ar1_bias_corr(phi, n, method = "yw")
 }
 \arguments{
-\item{cutoff}{}
+\item{phi}{A numeric value representing the estimate of phi.}
+
+\item{n}{An integer representing the length of the time series for which the
+value of phi was computed.}
+
+\item{method}{A character string indicating the method that was used to
+obtain phi.
+Options: "yw" (default) - Yule-Walker method, "burg" - Burg method.}
+}
+\value{
+A numeric value representing the bias corrected estimate 'y'.
 }
 \description{
-Title
+This function corrects the bias of estimates using the AR(1) process for a
+specific period 'n'. The 'method' parameter can be used to choose the method
+to obtain optimal betas from sysdata.RDA.
+}
+\examples{
+ar1_bias_corr(0.3, 5)
 }
