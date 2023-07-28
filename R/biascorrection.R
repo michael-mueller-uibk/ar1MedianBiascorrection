@@ -54,14 +54,15 @@ ar1_bias_corr <- function(phi, n, method = "yw") {
   if (n <= 4 || n > 100) {
     stop("Argument 'n' must be an integer between 5 and 100")
   }
-  if (!method %in% c("yw", "burg")) {
-    stop("Invalid 'method' argument. Supported options are 'yw' and 'burg'.")
+  if (!method %in% c("yw", "burg", "mle")) {
+    stop("Invalid 'method' argument. Supported options are 'yw', 'burg', and mle.")
   }
 
   # Get optimal betas from sysdata.RDA
   switch(method,
          "yw"   = betas <- ar1MedianBiascorrection:::yule_walker_betas,
          "burg" = betas <- ar1MedianBiascorrection:::burg_betas,
+         "mle"  = betas <- ar1MedianBiascorrection:::mle_betas,
   )
   # Get the betas for the specific period
   b <- betas[[n - 4]]
